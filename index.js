@@ -19,6 +19,7 @@ app.use(express.json())
 app.use(cors({
     origin : 'http://localhost:3000'
 }))
+
 app.use('/auth', userRouter)
 app.use('/message', messageRouter)
 app.use('/profile', profilRouter)
@@ -34,8 +35,8 @@ io.on("connection", socket => {
     })
 })
 
-app.use("*", (req, res) => {
-    response(res, [], 200, "page not found")
+app.use((req, res) => {
+    return response(res, [], 300, 'PAGE NOT FOUND')
 })
 
 const PORT = process.env.PORT || 5000
