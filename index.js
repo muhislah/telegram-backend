@@ -6,6 +6,7 @@ const userRouter = require('./src/route/userRoute')
 const cors = require('cors')
 const messageRouter = require('./src/route/messageRouter')
 const profilRouter = require('./src/route/profileRouter')
+const response = require('./src/helper/response')
 
 const app = express()
 const httpServer = createServer(app)
@@ -31,6 +32,10 @@ io.on("connection", socket => {
     socket.on('disconnect', () => {
         console.log("device disconnect");
     })
+})
+
+app.use(() => {
+    response(res, [], 200, "page not found")
 })
 
 const PORT = process.env.PORT || 5000
