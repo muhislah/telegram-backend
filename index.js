@@ -34,7 +34,7 @@ io.on("connection", socket => {
     })
 })
 
-app.use(() => {
+app.use((req, res) => {
     response(res, [], 200, "page not found")
 })
 
