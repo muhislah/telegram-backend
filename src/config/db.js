@@ -1,11 +1,21 @@
 const { Pool } = require('pg')
-
+const connectionString = `postgres://abfuoibhldpxpn:6c622fe4af96bb8df175662ed5f3e83cd9d2e514be35d1c7241acb364b3e44ff@ec2-54-152-28-9.compute-1.amazonaws.com:5432/ddk8bbg0n56uqf`
 const pool = new Pool({
-    user : 'postgres',
-    host : 'localhost',
-    database : 'telegram',
-    password : 'toor',
-    port : '5432'
+    connectionString : connectionString,
+    // user : 'postgres',
+    // host : 'localhost',
+    // database : 'telegram',
+    // password : 'toor',
+    // port : '5432',
+    ssl: { rejectUnauthorized : false }
+})
+
+pool.connect((err) => {
+    if (err){
+        console.log(err)
+    }else {
+        console.log("success connect to db postgres heroku")
+    }
 })
 
 
