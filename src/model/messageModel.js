@@ -12,8 +12,8 @@ const updateMessage = ({id, body}) => {
 const deleteMessage = (id) => {
   return pool.query('DELETE FROM messages WHERE id = $1', [id])
 }
-const getLastMessage = (id) => {
-  return pool.query(`select body, sender_id, receiver_id , extract(epoch from post_at) as time from messages where sender_id = '${id}' or receiver_id = '${id}' order by post_at desc limit 1`)
+const getLastMessage = (id, sender_id) => {
+  return pool.query(`select body, sender_id, receiver_id , extract(epoch from post_at) as time from messages where ( sender_id = '${id}' and receiver_id = '${sender_id}') or (sender_id = '${sender_id}' and receiver_id  = '${id}') order by post_at desc limit 1; `)
 }
 
 module.exports = {

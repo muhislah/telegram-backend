@@ -17,7 +17,6 @@ module.exports.registerUser = async (req, res, next) => {
         user.fullname = fullname
         user.email = email
         user.password = await passwd.hash(password, 10)
-        user.photo = null
         const { rowCount } = await searchUser(email)
         if (rowCount) {
             return response(res, [], 500, 'USER HAS BEEN REGISTERED')

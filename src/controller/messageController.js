@@ -9,9 +9,9 @@ module.exports.addMessage = async (req, res, next) => {
         if (type != "access-token"){
            return response(res, [] ,200 , "TOKEN WRONG")
         }
-        const { body , receiver_id } = req.body
+        const { body , receiver_id , id : uuid } = req.body
         const data = {}
-        data.id = uuid()
+        data.id = uuid
         data.body = body
         data.sender_id = id
         data.receiver_id = receiver_id

@@ -23,11 +23,15 @@ module.exports.getAllUser = async (req, res, next) => {
         const { id: sender_id } = req.payload
         const { rows } = await getAllUser()
         const filtered = rows.filter((data) => data.id !== sender_id)
-        let alluser = []
         const detailPerUser = filtered.map(async (data) => {
-            const { rows: [last] } = await getLastMessage(data.id)
-            data.lastMessage = last?.body || "Say Hai !!!"
-            data.lastTime = last?.time || '1658822941'
+            const { rows: [last] } = await getLastMessage(data.id , sender_id)
+            if(last){
+                data.lastMessage = last.body
+                data.lastTime = last.time 
+            }else{
+                data.lastMessage = "Say Hai !!!"
+                data.lastTime = '1658822941'
+            }
             return data
         })
         const result = await Promise.all(detailPerUser)

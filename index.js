@@ -36,10 +36,13 @@ io.on("connection", socket => {
         console.log(users)
         io.emit('online', users)
     })
+    socket.on('close', () => {
+        socket.disconnect()
+    })
     socket.on('disconnect', () => {
+        delete users[socket.id]
         io.emit('online', users)
         console.log("device disconnect");
-        delete users[socket.id]
         console.log(users)
     })
 },[])
