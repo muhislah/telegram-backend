@@ -75,6 +75,8 @@ CLOUDINARY_API_SECRET =  'dDB5rNTIKweyjRCTaALU89XQ-eY' // or use your own
 CLOUDINARY_URL = cloudinary://137181345732934:dDB5rNTIKweyjRCTaALU89XQ-eY@muhislah // or use your own
 
 ```
+4. Getting stuck, read the POSTMAN Collection
+* [`Teleram Postman Documentation`](https://documenter.getpostman.com/view/20688868/UzXNSwNg)
 
 
 <!-- CONTRIBUTING -->
