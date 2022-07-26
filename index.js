@@ -24,16 +24,25 @@ app.use('/auth', userRouter)
 app.use('/message', messageRouter)
 app.use('/profile', profilRouter)
 
+const users = {}
 io.on("connection", socket => {
     console.log("device connect with id = "+socket.id);
     socket.on('sendMessage', (data) => {
         console.log(data)
         io.emit('incoming', data)
     })
-    socket.on('disconnect', () => {
-        console.log("device disconnect");
+    socket.on('present', (data) => {
+        users[socket.id] = data
+        console.log(users)
+        io.emit('online', users)
     })
-})
+    socket.on('disconnect', () => {
+        io.emit('online', users)
+        console.log("device disconnect");
+        delete users[socket.id]
+        console.log(users)
+    })
+},[])
 
 app.use((req, res) => {
     return response(res, [], 300, 'PAGE NOT FOUND')

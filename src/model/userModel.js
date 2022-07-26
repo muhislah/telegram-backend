@@ -2,7 +2,7 @@ const pool = require('../config/db')
 
 const registerUser = ({id, fullname, email, password, photo}) => {
     console.log('registering user...')
-    return pool.query(`INSERT INTO users (id, fullname, email, password, photo) values ('${id}','${fullname}', '${email}', '${password}', '${photo}')`)
+    return pool.query(`INSERT INTO users (id, fullname, email, password, photo, bio) values ('${id}','${fullname}', '${email}', '${password}', '${photo || null}', '')`)
 }
 
 const searchUser = (email) => {

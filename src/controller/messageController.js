@@ -19,7 +19,7 @@ module.exports.addMessage = async (req, res, next) => {
         if(!rowCount) {
           return response(res, [] , 200, 'failed add message')
         }
-        response(res, [] , 200, 'success add message')
+        response(res, data , 200, 'success add message')
     } catch (error) {
         console.log(error)
     }
@@ -33,7 +33,14 @@ module.exports.getMessage = async (req,res, next) => {
     if (!rows) {
       return response(res, [], 500, 'get data failed')
     }
-    response(res, rows, 200, 'get data success')
+    const newData = rows.map((data) => {
+      const date = new Date(data.time * 1000)
+      const hours = date.getHours()
+      const minutes = date.getMinutes()
+      data.time = hours+':'+minutes
+      return data
+    })
+    response(res, newData, 200, 'get data success')
   } catch (error) {
     console.log(error)
   }

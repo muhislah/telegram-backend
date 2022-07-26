@@ -12,9 +12,9 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
     cloudinary,
     params: {
-        folder: 'nono',
-        resource_type: 'auto',
-        allowedFormats: ['jpeg', 'png', 'jpg', 'mp4']
+        folder: 'profile',
+        resource_type: 'image',
+        allowed_format : ['image/jpg','image/png','image/jpeg']
     }
 });
 

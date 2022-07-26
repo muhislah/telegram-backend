@@ -7,6 +7,6 @@ router
     .post('/add', auth , addMessage)
     .get('/:receiver_id' , auth , getMessage)
     .put('/:id', auth, updateMessage)
-    .delete('/:id', auth, deleteMessage)
+    .delete('/:id', auth , deleteMessage)
 
 module.exports = router
