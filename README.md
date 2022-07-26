@@ -43,7 +43,7 @@ Telegram Rest API is server api that used in [`Telegram`](https://telegram-xi.ve
 * [Express JS](https://expressjs.com/)
 * [Node Mailer](https://nodemailer.com/)
 * [Cloudinary](https://cloudinary.com/)
-* [`Socket IO`](https://socket.io/docs/v4/)
+* [Socket IO](https://socket.io/docs/v4/)
 
 
 <!-- GETTING STARTED -->
@@ -76,7 +76,7 @@ CLOUDINARY_URL = cloudinary://137181345732934:dDB5rNTIKweyjRCTaALU89XQ-eY@muhisl
 
 ```
 4. Getting stuck, read the POSTMAN Collection
-* [`Teleram Postman Documentation`](https://documenter.getpostman.com/view/20688868/UzXNSwNg)
+* [Telegram Postman Documentation](https://documenter.getpostman.com/view/20688868/UzXNSwNg)
 
 
 <!-- CONTRIBUTING -->
